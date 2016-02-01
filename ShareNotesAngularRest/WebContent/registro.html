@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<link href="CSS/estilos.css" media="all" rel="stylesheet" type="text/css" />
+<title>ShareNotes</title>
+<script src="js/libs/angular.min.js"></script>
+<script src="js/libs/angular-route-min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/usuarioCtrl.js"></script>
+</head>
+
+<body>
+
+<header>
+    <h1 class="title">ShareNotes</h1>
+    <img class="aligncenter" src="./Imagenes/shareNotes.jpg" alt="ShareNotes" />
+<div>
+  <nav>
+    <ul class="menu">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="#">Categorias</a></li>
+    <li><a href="#">Buscar Post</a></li>
+    <li><a href="#">Cuenta</a>
+  	  <ul class="sub-menu">    
+   	  <li><a href="registro.html">Registrarse</a></li>
+	  <li><a href="index.html">Iniciar Sesion</a></li>	   	  		   
+  	  </ul>
+	</li>
+    </ul>
+   </nav>
+  </div>   
+</header>
+
+
+<center>
+<div ng-app="shareNotes"  ng-controller="ingresarUsuarioCtrl" ng-submit="ingresarUsuario()">
+	<h3>REGISTRO</h3>
+	<br><br>
+	<h6>Ingrese sus datos:</h6>
+    <table>
+	<tr><td>
+	Nombre:
+	</td><td>	      
+	<input type="text" name="nombreUsuario" ng-model="usuario.nombre">
+	</td></tr><tr><td>			
+	Username:
+	</td><td>      
+	<input type="text" name="username" ng-model="usuario.username" >
+	</td></tr><tr><td>		
+	Password:
+	</td><td>	      
+	<input type="password" name="password1" ng-model="usuario.password1">
+	</td></tr><tr><td>
+	Repetir password:      
+	</td><td>
+	<input type="password" name="password2" ng-model="usuario.password2">
+	</td></tr>			
+	</table>
+	<button ng-click="ingresarUsuario(usuario.nombre, usuario.username, usuario.password1,usuario.password2)" name="botonRegistrarse">Registrarme</button>
+</div>	
+</center>
+
+
+
+
+
+<footer class="center">
+Proyecto de Aplicaciones WEB
+<br>GR2 - 2015B
+</footer>
+</body>
+</html>
