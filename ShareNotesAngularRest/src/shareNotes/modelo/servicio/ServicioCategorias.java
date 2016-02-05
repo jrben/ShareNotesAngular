@@ -1,6 +1,7 @@
 package shareNotes.modelo.servicio;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -14,6 +15,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 import shareNotes.modelo.jpa.Categorias;
+import shareNotes.modelo.jpa.Post;
 
 @Path("ServicioCategorias")
 @Produces("application/json")
@@ -63,5 +65,22 @@ public class ServicioCategorias {
 		em.getTransaction().commit();    	
 	}
 
+	
+	@GET
+	@Path("editarCategoria/{idCategoria}/{nombrecategoria}")
+	public void actualizarPost(@PathParam("idCategoria")int idCategoria,
+			
+			@PathParam("nombrecategoria")String nombrecategoria){
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory( "ShareNotesAngularRest" );
+    	EntityManager em = emf.createEntityManager();
+    	
+    	
+    	Categorias categoria= em.find(Categorias.class, idCategoria) ;
+    	
+    	em.getTransaction().begin();    	
+    	categoria.setNombreCategoria(nombrecategoria);
+		em.getTransaction().commit();
+	}
+	
 	
 }

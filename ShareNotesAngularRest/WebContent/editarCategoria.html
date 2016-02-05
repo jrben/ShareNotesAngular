@@ -1,16 +1,18 @@
+
 <!DOCTYPE html>
-<html ng-app="shareNotes">
+<html>
 <head>
 <meta charset="ISO-8859-1">
- <link href="CSS/estilos.css" media="all" rel="stylesheet" type="text/css" /> 
+ <link href="CSS/estilos.css" media="all" rel="stylesheet" type="text/css" />
 <title>ShareNotes</title>
+
 	<script src="js/libs/angular.min.js"></script>
 	<script src="js/libs/angular-route-min.js"></script>	
 	<script src="js/app.js"></script>
-	<script src="js/postCtrl.js"></script>
+	<script src="js/categoriaIngresarCtrl.js"></script>
+	
 </head>
-<body ng-controller="postCtrl1">
-
+<body>
 <header>
   
     <h1 class="title">ShareNotes</h1>
@@ -24,7 +26,7 @@
     <ul class="sub-menu">    
    	  <li><a href="nuevaCategoria.html">Nueva Categoria</a></li>
 	  <li><a href="listarCategorias.html">Ver Categoria</a></li>
-	  	  <li><a href="editarCategoria.html">Editar Categoria</a></li>
+	  	  <li><a href="#">Editar Categoria</a></li>
 	  <li><a href="#">Eliminar Categoria</a></li>
 	  </ul></li>
     <li><a href="#">Buscar Post</a></li>
@@ -38,17 +40,31 @@
    </nav>
   </div>  
  </header>
- 
- 
-<div ng-repeat="p in posts">
-<div id="lista"><br>						
-<a href="mostrarPost.html?id={{p.idPost}}">						
-{{p.titulo}}
-</a>
-</div>
-<br>	
-</div>
-	
+<center>
+<div ng-app="shareNotes"  ng-controller="categoriaIngresarCtrl" >
+
+		<h3>Actualizar CATEGORIA</h3>
+		<br><br>
+		<h6>Ingrese los datos de Categoria:</h6>
+		<br><br>	
+		
+		<table>
+			<tr><td>
+				Nombre:
+			</td><td>	     
+			<select name="categoriaEditar" ng-model="categoria.nombre" >   
+           <option  ng-repeat="c in categorias" value="{{c.idCategoria}}">{{c.nombreCategoria}}</option> 
+           </select>
+           
+				<input type="text" name="nombreCategoria" ng-model="categoria.nuevonombrecategoria">
+			</td><td>
+				<button name="botonEditarCategoria" ng-click="actualizarCategoria(categoria.nombre, categoria.nuevonombrecategoria)">Guardar Categoria</button>
+			</td></tr><tr><td>			
+							
+		</table>
+
+</div>	
+</center>
 	
 <footer class="center">
 Proyecto de Aplicaciones WEB
