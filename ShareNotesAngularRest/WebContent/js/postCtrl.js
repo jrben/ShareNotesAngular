@@ -13,7 +13,7 @@ app.controller('postCtrl1', function($scope, $http) {
 	     });
 });
 
-app.controller('verPostCtrl', function($scope, $http, $location) {
+app.controller('verPostCtrl', function($scope, $http, $location, $window) {
 	
 	$http.get("http://localhost:8080/ShareNotesAngularRest/rest/ServicioPost/post?id="+$location.search().id)
     .success(function(data) {
@@ -23,7 +23,9 @@ app.controller('verPostCtrl', function($scope, $http, $location) {
 	 $scope.eliminarPost = function(a) {
     		$http.get("http://localhost:8080/ShareNotesAngularRest/rest/ServicioPost/eliminarPost/"+a)
      	    .success(function(data) {
-     	        $scope.rpta = data;          
+     	        $scope.rpta = data; 
+     	        
+     	       $window.alert("Post Eliminado Exitosamenta :( "); 
      	     });
 	 }
 	 
@@ -31,7 +33,7 @@ app.controller('verPostCtrl', function($scope, $http, $location) {
 });
 
 
-app.controller('editarPostCtrl', function($scope, $http, $location) {
+app.controller('editarPostCtrl', function($scope, $http, $location, $window) {
 	
 	$http.get("http://localhost:8080/ShareNotesAngularRest/rest/ServicioCategorias/listarCategorias")
     .success(function(data) {
@@ -48,7 +50,8 @@ app.controller('editarPostCtrl', function($scope, $http, $location) {
    				+"/"+b+"/"+c+"/"+d)
     	    .success(function(data) {
     	    	$scope.vaciarInputs();
-    	        $scope.posts = data;          
+    	        $scope.posts = data;   
+    	        $window.alert("Post Actualizado Existosamente :) "); 
     	     });
 	   }
 	   
@@ -63,7 +66,7 @@ app.controller('editarPostCtrl', function($scope, $http, $location) {
 	
 });
 
-app.controller('nuevoPostCtrl', function($scope, $http) {
+app.controller('nuevoPostCtrl', function($scope, $http, $window) {
 	
 	$http.get("http://localhost:8080/ShareNotesAngularRest/rest/ServicioCategorias/listarCategorias")
     .success(function(data) {
@@ -76,7 +79,8 @@ app.controller('nuevoPostCtrl', function($scope, $http) {
      				+"/"+b+"/"+c)
       	    .success(function(data) {
       	    	$scope.vaciarInputs();
-      	        $scope.posts = data;          
+      	        $scope.posts = data; 
+      	      $window.alert("Post Ingresado Correctamente :) "); 
       	     });
 	   }
 	   
