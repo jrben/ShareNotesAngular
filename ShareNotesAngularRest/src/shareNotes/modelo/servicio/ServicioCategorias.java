@@ -10,6 +10,7 @@ import javax.persistence.Query;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 import shareNotes.modelo.jpa.Categorias;
@@ -46,4 +47,21 @@ public class ServicioCategorias {
     	String nombre=c.getNombreCategoria();
 		return nombre;
 	}
+	
+	@GET
+	@Path("ingresarCategoria/{nombrecategoria}")
+	public void ingresarCategoria(@PathParam ("nombrecategoria")String nombrecategoria){
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory( "ShareNotesAngularRest" );
+    	EntityManager em = emf.createEntityManager();
+    	
+    	em.getTransaction().begin();
+    	Categorias categoria= new Categorias();
+    	categoria.setNombreCategoria(nombrecategoria);
+    	
+    	em.persist(categoria);
+		em.flush();
+		em.getTransaction().commit();    	
+	}
+
+	
 }

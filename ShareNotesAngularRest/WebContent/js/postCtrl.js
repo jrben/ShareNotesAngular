@@ -6,7 +6,7 @@ var app = angular.module('shareNotes', ['ngRoute'])
 		});
 	});
 
-app.controller('postCtrl', function($scope, $http) {
+app.controller('postCtrl1', function($scope, $http) {
 		$http.get("http://localhost:8080/ShareNotesAngularRest/rest/ServicioPost/listarPosts")
 	    .success(function(data) {
 	        $scope.posts = data;          
