@@ -4,8 +4,7 @@
 <link href="CSS/estilos.css" media="all" rel="stylesheet" type="text/css" />
 <meta charset="ISO-8859-1">
  
-<title>ShareNotes</title>
-	
+<title>ShareNotes</title>	
 
 	<script src="js/libs/angular.min.js"></script>
 	<script src="js/libs/angular-route-min.js"></script>
@@ -33,40 +32,31 @@
    </nav>
   </div>   
 </header>
- 
-
-<div ng-app="shareNotes" ng-controller="verPostCtrl">
-	<div style="background-color:#eeeeff">
-		<br>
-		<h3>{{posts.titulo}}</h3>
-		<br>
-	</div>
-	<br>
-	
-	<div style="background-color:#ffffff">
-	<br>			
-	{{posts.descripcion}}<br>	
-	</div>
-	<br>
-	
-	<div style="background-color:#B39CB7">
-			
-	
-	<br>
-	Categoría:  {{posts.categoria}}<br>
-	Fecha: {{posts.fecha}}<br>
-	<a ng-href="editarPost.html?id={{posts.idPost}}">Editar Post</a><br>
-	<a ng-click="eliminarPost(posts.idPost)">Eliminar Post</a><br>
-			
-	</div>
- </div>
-	
-	<br>
+ <center>
+<h3>Nuevo Post</h3>
+<br><br>
+<div ng-app="shareNotes" ng-controller="editarPostCtrl">
+<table>
+<tr><td>Titulo:</td><td><input type="text" name="tituloPost" ng-model="post.titulo" value={{post.titulo}}></td></tr>
+<tr><td>Categoria:</td><td><select name="categoriaPost" ng-model="post.categoria" >   
+<option  ng-repeat="c in categorias" value="{{c.idCategoria}}">{{c.nombreCategoria}}</option> 
+</select></td></tr>
+<tr><td>Descripcion:</td><td>
+<textarea rows="20" cols="50" name="descripcionPost" ng-model="post.descripcion">
+{{post.descripcion}}
+</textarea></td></tr>
+</table>
+<button ng-click="actualizarPost(post.idPost, post.titulo, post.categoria, post.descripcion)" name="botonNuevoPost">Guardar Post</button>
+</div>
+</center>
 <footer class="center">
 Proyecto de Aplicaciones WEB
 <br>GR2 - 2015B
 </footer>	 
  
+
+</body>
+</html>
 
 </body>
 </html>

@@ -1,6 +1,7 @@
 package shareNotes.modelo.servicio;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -11,6 +12,7 @@ import javax.persistence.TypedQuery;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 
@@ -22,37 +24,48 @@ import shareNotes.modelo.vo.PostDTO;
 @Produces("application/json")
 @Consumes("application/json")
 public class ServicioPost {
-	
-	public void ingresarPost(Post p){
+	@GET
+	@Path("ingresarPost/{tituloPost}/{idCategoria}/{descripcionPost}")
+	public void ingresarPost(
+			@PathParam("tituloPost")String tituloPost,
+			@PathParam("idCategoria")int idCategoria,
+			@PathParam("descripcionPost")String descripcionPost){
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory( "ShareNotesAngularRest" );
     	EntityManager em = emf.createEntityManager();
-    	
     	em.getTransaction().begin();
     	Post post = new Post();
-    	post.setIdUsuario(p.getIdUsuario());
-    	post.setIdCategoria(p.getIdCategoria());
-    	post.setTitulo(p.getTitulo());
-    	post.setDescripcion(p.getDescripcion());
-    	post.setFecha(p.getFecha());
+    	post.setIdUsuario(1);
+    	post.setIdCategoria(idCategoria);
+    	post.setTitulo(tituloPost);
+    	post.setDescripcion(descripcionPost);
+    	post.setFecha(new Date().toString());
     	em.persist(post);
 		em.flush();
 		em.getTransaction().commit();    	
 	}
 	
-	public void actualizarPost(Post p){
+	@GET
+	@Path("actualizarPost/{idPost}/{tituloPost}/{idCategoria}/{descripcionPost}")
+	public void actualizarPost(
+			@PathParam("idPost")int idPost,
+			@PathParam("tituloPost")String tituloPost,
+			@PathParam("idCategoria")int idCategoria,
+			@PathParam("descripcionPost")String descripcionPost){
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory( "ShareNotesAngularRest" );
     	EntityManager em = emf.createEntityManager();
     	
-		Post post = em.find(Post.class, p.getIdPost());		 
+		Post post = em.find(Post.class, idPost);		 
 		em.getTransaction().begin();
-		post.setTitulo(p.getTitulo());
-		post.setDescripcion(p.getDescripcion());
-		post.setFecha(p.getFecha());
-		post.setIdCategoria(p.getIdCategoria());
+		post.setTitulo(tituloPost);
+		post.setDescripcion(descripcionPost);
+		post.setFecha(new Date().toString());
+		post.setIdCategoria(idCategoria);
 		em.getTransaction().commit();
 	}
 	
-	public void eliminarPost(int idPost){
+	@GET
+	@Path("eliminarPost/{idPost}")
+	public void eliminarPost(@PathParam("idPost")int idPost){
 		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory( "ShareNotesAngularRest" );
     	EntityManager em = emf.createEntityManager();
