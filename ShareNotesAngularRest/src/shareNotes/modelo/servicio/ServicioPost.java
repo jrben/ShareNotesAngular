@@ -115,12 +115,13 @@ public class ServicioPost {
 		return posts;		
 	}
 	
-	
-public List<Post> listarPostsTitulo(String titulo){
+@GET
+@Path("buscarPostTitulo/{titulopost}")
+public List<Post> listarPostsTitulo(@PathParam("titulopost")String titulo){
 		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory( "ShareNotesAngularRest" );
 		EntityManager em = emf.createEntityManager();
-		Query query = em.createQuery("SELECT p FROM Post p WHERE p.titulo= '"+titulo+"'");
+		Query query = em.createQuery("SELECT p FROM Post p WHERE p.titulo LIKE '"+"%"+titulo+"%"+"'");
 		
 		List<Post> posts = new ArrayList<Post>();
 		List<Post> lista = (List<Post>)query.getResultList( );
