@@ -1,4 +1,10 @@
-var app = angular.module('shareNotes')
+var app = angular.module('shareNotes',['ngRoute'])
+.config(function($locationProvider) {	
+	$locationProvider.html5Mode({
+		  enabled: true,
+		  requireBase: false
+		});
+	});
 
 
 app.controller('postsPorCategoriaTituloCtrl', function($scope, $http, $location) 
