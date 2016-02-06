@@ -54,11 +54,13 @@
 				<input ng-model="post.titulo" type="text" name="titulo">
 			</td><td>
 				<input type="button" ng-click="buscarPost(post.titulo)" name="botonBuscarPost" value="Buscar"></input>
-			</td></tr>	
-				
+			</td></tr>				
 		</table>
+		<br>
+		<h5>Resultados: </h5>
+		<br>
+		<table border="1" bgcolor=#FFFFFF>
 		
-		<table border="1">
 		<tr ng-repeat="p in posts">						
 		<td><a href="mostrarPost.html?id={{p.idPost}}">						
 		{{p.titulo}}

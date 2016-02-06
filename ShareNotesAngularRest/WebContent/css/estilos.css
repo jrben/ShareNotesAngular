@@ -64,7 +64,7 @@ article, aside, figure, footer, header, hgroup, nav, section {display: block;}
 html{-webkit-font-smoothing:antialiased;}
 
 a{color:#000000;}
-a:hover{color:#87CEEB; text-decoration: underline;}
+a:hover{color:#0080FF; text-decoration: underline;}
 
 body{background:#ffffff url("../Imagenes/bkg.jpg") no-repeat 0 0;
 color:#3E4156;
