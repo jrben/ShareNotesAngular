@@ -18,7 +18,7 @@ app.controller('categoriaIngresarCtrl', function($scope, $http,  $window) {
    	angular.copy($scope.ct, $scope.categoria);       
    }
     
-   
+   //eliminar
    $scope.eliminarCategoria=function (a){
 	   $http.get("http://localhost:8080/ShareNotesAngularRest/rest/ServicioCategorias/eliminarCategoria/"+a)
 	   .success(function(data){

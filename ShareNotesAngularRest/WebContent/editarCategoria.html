@@ -45,17 +45,19 @@
 
 		<h3>Actualizar CATEGORIA</h3>
 		<br><br>
-		<h6>Ingrese los datos de Categoria:</h6>
-		<br><br>	
-		
+		<h6>Ingrese los datos de Categoria:</h6>		
 		<table>
-			<tr><td>
-				Nombre:
-			</td><td>	     
+			
+			<tr><td>	  
+            Escoja la categoria a cambiar:  
+            <td>
 			<select name="categoriaEditar" ng-model="categoria.nombre" >   
            <option  ng-repeat="c in categorias" value="{{c.idCategoria}}">{{c.nombreCategoria}}</option> 
            </select>
-           
+           </td><td>
+           <tr><td>
+				Nuevo nombre de la categoria:
+			<td>
 				<input type="text" name="nombreCategoria" ng-model="categoria.nuevonombrecategoria">
 			</td><td>
 				<button name="botonEditarCategoria" ng-click="actualizarCategoria(categoria.nombre, categoria.nuevonombrecategoria)">Guardar Categoria</button>

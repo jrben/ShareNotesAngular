@@ -6,9 +6,9 @@
 		<class>shareNotes.modelo.jpa.Denuncia</class>
 		<class>shareNotes.modelo.jpa.Categorias</class>
 		<properties>
-			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/ShareNotes"/>
-			<property name="javax.persistence.jdbc.user" value="root"/>
-			<property name="javax.persistence.jdbc.password" value="root"/>
+			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5434/ShareNotes"/>
+			<property name="javax.persistence.jdbc.user" value="postgres"/>
+			<property name="javax.persistence.jdbc.password" value="laura"/>
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
 		</properties>
 	</persistence-unit>

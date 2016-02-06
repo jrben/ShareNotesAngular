@@ -83,4 +83,18 @@ public class ServicioCategorias {
 	}
 	
 	
+	@GET
+	@Path("eliminarCategoria/{idCategoria}")
+	public void eliminarCategoria(@PathParam("idCategoria")int idCategoria){
+		
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory( "ShareNotesAngularRest" );
+    	EntityManager em = emf.createEntityManager();
+    	
+		Categorias categEliminar = em.find(Categorias.class, idCategoria);				 
+		em.getTransaction().begin();
+		em.remove(categEliminar);
+		em.getTransaction().commit();
+	}
+	
+	
 }
