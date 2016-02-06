@@ -8,10 +8,11 @@
 	<script src="js/libs/angular.min.js"></script>
 	<script src="js/libs/angular-route-min.js"></script>	
 	<script src="js/app.js"></script>
-	<script src="js/categoriaIngresarCtrl.js"></script>
+	<script src="js/postsPorCategoriaCtrl.js"></script>
 	
 </head>
 <body>
+
 <header>
   
     <h1 class="title">ShareNotes</h1>
@@ -39,34 +40,25 @@
    </nav>
   </div>  
  </header>
-<center>
-<div ng-app="shareNotes"  ng-controller="categoriaIngresarCtrl" >
 
-		<h3>Actualizar CATEGORIA</h3>
+<div ng-app="shareNotes"  ng-controller="postsPorCategoriaTituloCtrl">
+		<h3>CATEGORIAS</h3>
 		<br><br>
-		<h6>Ingrese los datos de Categoria:</h6>		
-		<table>
-			
-			<tr><td>	  
-            Escoja la categoria a eliminar:  
-            <td>
-			<select name="categoriaEditar" ng-model="categoria.nombreEliminar" >   
-           <option  ng-repeat="c in categorias" value="{{c.idCategoria}}">{{c.nombreCategoria}}</option> 
-           </select>
-           </td><td>           
-				<button name="botonEliminaCategoria" ng-click="eliminarCategoria(categoria.nombreEliminar)">Eliminar Categoria</button>
-			</td></tr><tr><td>			
-							
-		</table>
+Nombre Categoria:
+
+
+Hola
+<div ng-repeat="postsC in postsPorCategoria" >
+{{postsC.titulo}
+
+</div>
+		     	
 
 </div>	
-</center>
-	
+
 <footer class="center">
 Proyecto de Aplicaciones WEB
 <br>GR2 - 2015B
 </footer>	
-
-
 </body>
 </html>

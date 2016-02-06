@@ -96,23 +96,24 @@ public class ServicioPost {
 		return posts;		
 	}
 
-	
-	public List<Post> listarPostsCategoria(int id){
+	@GET
+	@Path("listarPostsPorCategoria/{idCategoria}")
+	public List<Post> listarPostsCategoria(@PathParam("idCategoria")int idCategoriaP){
 		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory( "ShareNotesAngularRest" );
 		EntityManager em = emf.createEntityManager();
-		Query query = em.createQuery("SELECT p FROM Post p WHERE p.idCategoria="+id);
+		Query query = em.createQuery("SELECT p FROM Post p WHERE p.idCategoria="+idCategoriaP);
 		
-		List<Post> posts = new ArrayList<Post>();
+		List<Post> postsC = new ArrayList<Post>();
 		List<Post> lista = (List<Post>)query.getResultList( );
 		 for(Post p:lista){
 			 Post post = new Post();
 			 post.setTitulo(p.getTitulo());
 			 post.setIdPost(p.getIdPost());
-			 posts.add(post);
+			 postsC.add(post);
 		 }	
 		
-		return posts;		
+		return postsC;		
 	}
 	
 @GET
