@@ -11,7 +11,7 @@
 	<script src="js/postsPorCategoriaCtrl.js"></script>
 	
 </head>
-<body>
+<body ng-app="shareNotes"  ng-controller="postsPorCategoriaTituloCtrl1">
 
 <header>
   
@@ -41,14 +41,17 @@
   </div>  
  </header>
 
-<div ng-app="shareNotes"  ng-controller="postsPorCategoriaTituloCtrl">
+<div >
 		<h3>CATEGORIAS</h3>
 		<br><br>
-Nombre Categoria:
+Posts:
 
 
 <div ng-repeat="postsC in postsPorCategoria" >
-{{postsC.titulo}
+<a href="mostrarPost.html?id={{postsC.idPost}}">						
+{{postsC.titulo}}
+</a>
+
 
 </div>
 		     	

@@ -7,10 +7,10 @@ var app = angular.module('shareNotes',['ngRoute'])
 	});
 
 
-app.controller('postsPorCategoriaTituloCtrl', function($scope, $http, $location) 
+app.controller('postsPorCategoriaTituloCtrl1', function($scope, $http, $location) 
 		{
 	
-	$http.get("http://localhost:8080/ShareNotesAngularRest/rest/ServicioPost/listarPostsPorCategoria?id="+$location.search().id)
+	$http.get("http://localhost:8080/ShareNotesAngularRest/rest/ServicioPost/listarPostsPorCategoria/"+$location.search().id)
     .success(function(data) {
         $scope.postsPorCategoria = data;          
      });
